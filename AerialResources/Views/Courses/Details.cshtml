@@ -1,0 +1,59 @@
+﻿@model AerialResources.DTO.GetAllMovesCourses;
+@using AerialResources.Operations;
+
+@{
+    ViewData["Title"] = "Details";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>List of Poses/Drops/Sequences</h4>
+
+
+
+    @foreach (var course in Model.courses)
+    {
+        if (course.CourseID == DatabaseManager.CourseID)
+        {
+            <h6> @Html.DisplayFor(modelItem => course.Name ) </h6>
+        }
+
+    }
+  
+    <hr />
+    <dl class="dl-horizontal">
+
+
+        @foreach (var move in Model.moves)
+
+        {
+            if (move.CourseID == DatabaseManager.CourseID)
+            {
+                <p> @Html.DisplayFor(modelItem => move.Name)</p>
+
+
+            }
+        }
+
+        @*<dt>
+                @Html.DisplayNameFor(model => model.myMoves.CourseID)
+            </dt>
+            <dt>
+
+            </dt>
+            <dd>
+                @Html.DisplayFor(model => model.myMoves.Name)
+            </dd>*@
+
+    </dl>
+
+
+    <a asp-controller="Moves" asp-action="Create">Add Moves</a>
+</div>
+<div>
+
+
+        @*<a asp-action="Edit" asp-route-id="@Model.CourseID">Edit</a> |*@
+        <a asp-action="Index">Back to List</a>
+    </div>

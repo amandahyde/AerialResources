@@ -1,0 +1,25 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 15
+VisualStudioVersion = 15.0.27428.2002
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AerialResources", "AerialResources\AerialResources.csproj", "{8D7EC860-827A-4B1B-94A2-4F59BD20D07D}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{8D7EC860-827A-4B1B-94A2-4F59BD20D07D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{8D7EC860-827A-4B1B-94A2-4F59BD20D07D}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{8D7EC860-827A-4B1B-94A2-4F59BD20D07D}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{8D7EC860-827A-4B1B-94A2-4F59BD20D07D}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {DA8F4E04-F798-45B5-9096-FA0BD8B37001}
+	EndGlobalSection
+EndGlobal
