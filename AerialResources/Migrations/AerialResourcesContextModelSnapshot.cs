@@ -35,6 +35,50 @@ namespace AerialResources.Migrations
                     b.ToTable("Course");
                 });
 
+            modelBuilder.Entity("AerialResources.Models.DuoVideos", b =>
+                {
+                    b.Property<int>("VideoID")
+                        .ValueGeneratedOnAdd();
+
+                    b.Property<string>("Description");
+
+                    b.Property<bool>("IsActive");
+
+                    b.Property<string>("Level");
+
+                    b.Property<string>("Name");
+
+                    b.Property<string>("PreReqs");
+
+                    b.Property<string>("Url");
+
+                    b.HasKey("VideoID");
+
+                    b.ToTable("DuoVideos");
+                });
+
+            modelBuilder.Entity("AerialResources.Models.LyraVideos", b =>
+                {
+                    b.Property<int>("VideoID")
+                        .ValueGeneratedOnAdd();
+
+                    b.Property<string>("Description");
+
+                    b.Property<bool>("IsActive");
+
+                    b.Property<string>("Level");
+
+                    b.Property<string>("Name");
+
+                    b.Property<string>("PreReqs");
+
+                    b.Property<string>("Url");
+
+                    b.HasKey("VideoID");
+
+                    b.ToTable("LyraVideos");
+                });
+
             modelBuilder.Entity("AerialResources.Models.Move", b =>
                 {
                     b.Property<int>("MoveID")
@@ -46,25 +90,79 @@ namespace AerialResources.Migrations
 
                     b.Property<string>("Name");
 
+                    b.Property<string>("PreReq");
+
+                    b.Property<string>("VideoLink");
+
                     b.HasKey("MoveID");
 
                     b.ToTable("Move");
                 });
 
-            modelBuilder.Entity("AerialResources.Models.Parent", b =>
+            modelBuilder.Entity("AerialResources.Models.RopeVideos", b =>
                 {
-                    b.Property<int>("ParentID")
+                    b.Property<int>("VideoID")
                         .ValueGeneratedOnAdd();
 
-                    b.Property<string>("Email");
+                    b.Property<string>("Description");
+
+                    b.Property<bool>("IsActive");
+
+                    b.Property<string>("Level");
 
                     b.Property<string>("Name");
 
-                    b.Property<string>("Phone");
+                    b.Property<string>("PreReqs");
 
-                    b.HasKey("ParentID");
+                    b.Property<string>("Url");
 
-                    b.ToTable("Parent");
+                    b.HasKey("VideoID");
+
+                    b.ToTable("RopeVideos");
+                });
+
+            modelBuilder.Entity("AerialResources.Models.SilksVideos", b =>
+                {
+                    b.Property<int>("VideoID")
+                        .ValueGeneratedOnAdd();
+
+                    b.Property<string>("Description");
+
+                    b.Property<bool>("IsActive");
+
+                    b.Property<string>("Level");
+
+                    b.Property<string>("Name");
+
+                    b.Property<string>("PreReqs");
+
+                    b.Property<string>("Url");
+
+                    b.HasKey("VideoID");
+
+                    b.ToTable("SilksVideos");
+                });
+
+            modelBuilder.Entity("AerialResources.Models.SlingVideos", b =>
+                {
+                    b.Property<int>("VideoID")
+                        .ValueGeneratedOnAdd();
+
+                    b.Property<string>("Description");
+
+                    b.Property<bool>("IsActive");
+
+                    b.Property<string>("Level");
+
+                    b.Property<string>("Name");
+
+                    b.Property<string>("PreReqs");
+
+                    b.Property<string>("Url");
+
+                    b.HasKey("VideoID");
+
+                    b.ToTable("SlingVideos");
                 });
 
             modelBuilder.Entity("AerialResources.Models.Student", b =>
@@ -72,11 +170,17 @@ namespace AerialResources.Migrations
                     b.Property<int>("StudentID")
                         .ValueGeneratedOnAdd();
 
+                    b.Property<string>("Class");
+
+                    b.Property<string>("Contact");
+
                     b.Property<DateTime>("DOB");
 
                     b.Property<string>("Name");
 
-                    b.Property<int>("ParentID");
+                    b.Property<string>("ParentContact");
+
+                    b.Property<string>("ParentName");
 
                     b.Property<bool>("Status");
 
@@ -97,6 +201,28 @@ namespace AerialResources.Migrations
                     b.HasKey("StudentCourseID");
 
                     b.ToTable("StudentCourse");
+                });
+
+            modelBuilder.Entity("AerialResources.Models.TrapezeVideos", b =>
+                {
+                    b.Property<int>("VideoID")
+                        .ValueGeneratedOnAdd();
+
+                    b.Property<string>("Description");
+
+                    b.Property<bool>("IsActive");
+
+                    b.Property<string>("Level");
+
+                    b.Property<string>("Name");
+
+                    b.Property<string>("PreReqs");
+
+                    b.Property<string>("Url");
+
+                    b.HasKey("VideoID");
+
+                    b.ToTable("TrapezeVideos");
                 });
 #pragma warning restore 612, 618
         }

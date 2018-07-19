@@ -1,7 +1,20 @@
-﻿body {
-    padding-top: 50px;
-    padding-bottom: 20px;
+﻿
+
+@media only screen and (max-width: 600px) {
+    iframe {
+        width: 261px;
+        height: 156px;
+    }
 }
+
+@media only screen and (min-width: 600px) and (max-width: 1400px) {
+    iframe {
+        width: 392px;
+        height: 234px;
+    }
+}
+
+
 
 /* Wrapping element */
 /* Set some basic padding to keep content from hitting the edges */

@@ -14,5 +14,7 @@ namespace AerialResources.Models
         public string Description { get; set; }
 
         public int Level { get; set; }
+
+
     }
 }

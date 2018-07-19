@@ -7,6 +7,8 @@ using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
 using AerialResources.Data;
 using AerialResources.Models;
+using AerialResources.DTO;
+using AerialResources.Operations;
 
 namespace AerialResources.Controllers
 {
@@ -22,6 +24,7 @@ namespace AerialResources.Controllers
         // GET: StudentCourses
         public async Task<IActionResult> Index()
         {
+
             return View(await _context.StudentCourse.ToListAsync());
         }
 
@@ -33,14 +36,33 @@ namespace AerialResources.Controllers
                 return NotFound();
             }
 
-            var studentCourse = await _context.StudentCourse
-                .SingleOrDefaultAsync(m => m.StudentCourseID == id);
-            if (studentCourse == null)
-            {
-                return NotFound();
-            }
+            var student  = await _context.Student
+                .SingleOrDefaultAsync(m => m.StudentID == id);
 
-            return View(studentCourse);
+            var course = await _context.Course
+               .SingleOrDefaultAsync(m => m.CourseID == id);
+
+            GetAllCourses mygetallcourses = new GetAllCourses();
+            myCourses myCourses = new myCourses();
+            myStudents myStudents = new myStudents();
+
+
+
+            DatabaseManager.StudentID = student.StudentID;
+            DatabaseManager.CourseID = course.CourseID;
+
+            myStudents.StudentID = student.StudentID;
+            myCourses.CourseID = course.CourseID;
+
+            var allStudents = _context.Student.ToList();
+            mygetallcourses.students = allStudents;
+
+            var allCourses = _context.Course.ToList();
+            mygetallcourses.courses = allCourses;
+
+            return View(mygetallcourses);
+
+           
         }
 
         // GET: StudentCourses/Create

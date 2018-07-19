@@ -9,6 +9,7 @@ using AerialResources.Data;
 using AerialResources.Models;
 using AerialResources.Operations;
 using AerialResources.DTO;
+using Microsoft.AspNetCore.Authorization;
 
 namespace AerialResources.Controllers
 {
@@ -22,7 +23,15 @@ namespace AerialResources.Controllers
         }
 
         // GET: Courses
+
+
+        [Authorize]
         public async Task<IActionResult> Index()
+        {
+            return View(await _context.Course.ToListAsync());
+        }
+
+        public async Task<IActionResult> ReferenceIndex()
         {
             return View(await _context.Course.ToListAsync());
         }
@@ -63,7 +72,9 @@ namespace AerialResources.Controllers
 
         // GET: Courses/Create
 
-            //Hello World!
+        //Hello World!
+
+        [Authorize]
         public IActionResult Create()
         {
             return View();
@@ -85,6 +96,8 @@ namespace AerialResources.Controllers
             return View(course);
         }
 
+
+        [Authorize]
         // GET: Courses/Edit/5
         public async Task<IActionResult> Edit(int? id)
         {

@@ -7,6 +7,7 @@ using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
 using AerialResources.Data;
 using AerialResources.Models;
+using Microsoft.AspNetCore.Authorization;
 
 namespace AerialResources.Controllers
 {
@@ -18,12 +19,13 @@ namespace AerialResources.Controllers
         {
             _context = context;
         }
-
+        [Authorize]
         // GET: Moves
         public async Task<IActionResult> Index()
         {
             return View(await _context.Move.ToListAsync());
         }
+        [Authorize]
 
         // GET: Moves/Details/5
         public async Task<IActionResult> Details(int? id)
@@ -42,7 +44,7 @@ namespace AerialResources.Controllers
 
             return View(move);
         }
-
+        [Authorize]
         // GET: Moves/Create
         public IActionResult Create()
         {
@@ -54,7 +56,7 @@ namespace AerialResources.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("MoveID,Name,Description,CourseID")] Move move)
+        public async Task<IActionResult> Create([Bind("MoveID,Name,Description,CourseID,VideoLink,PreReq")] Move move)
         {
             if (ModelState.IsValid)
             {
@@ -66,6 +68,7 @@ namespace AerialResources.Controllers
         }
 
         // GET: Moves/Edit/5
+        [Authorize]
         public async Task<IActionResult> Edit(int? id)
         {
             if (id == null)
@@ -86,7 +89,7 @@ namespace AerialResources.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(int id, [Bind("MoveID,Name,Description,CourseID")] Move move)
+        public async Task<IActionResult> Edit(int id, [Bind("MoveID,Name,Description,CourseID,VideoLink,PreReq")] Move move)
         {
             if (id != move.MoveID)
             {

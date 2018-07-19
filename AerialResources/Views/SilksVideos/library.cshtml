@@ -1,0 +1,343 @@
+﻿
+@model IEnumerable<AerialResources.Models.SilksVideos>
+
+<html>
+
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <title>Airborne Aerialists</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- CSS
+    ================================================== -->
+    <style>
+          
+
+        .filterDiv {
+            float: left;
+
+            width: 392px;
+            /*line-height: 100px;*/
+            text-align: center;
+            margin: 2px;
+            display: none;
+            padding: 15px;
+        }
+
+        .show {
+            display: block;
+        }
+
+        .container {
+            margin-top: 20px;
+            overflow: hidden;
+        }
+
+        /* Style the buttons */
+        .btn {
+            border: none;
+            outline: none;
+            padding: 12px 16px;
+            background-color: #f1f1f1;
+            cursor: pointer;
+        }
+
+            .btn:hover {
+                background-color: #ddd;
+            }
+
+            .btn.active {
+                background-color: #666;
+                color: white;
+            }
+
+
+    </style>
+    <link href="~/css/bootstrap.css" rel="stylesheet" />
+    <link href="~/css/bootstrap-responsive.css" rel="stylesheet" />
+    <link href="~/css/custom-styles.css" rel="stylesheet" />
+    <link href="~/css/prettyPhoto.css" rel="stylesheet" />
+    <link href="~/css/flexslider.css" rel="stylesheet" />
+    <link href="~/css/site.css" rel="stylesheet" />
+    <link href="~/css/style-ie.css" rel="stylesheet" />
+    <!--[if lt IE 9]>
+        <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
+        <link rel="stylesheet" href="css/style-ie.css"/>
+    <![endif]-->
+    <!-- Favicons
+    ================================================== -->
+    <link rel="shortcut icon" href="img/favicon.ico">
+    <link rel="apple-touch-icon" href="img/apple-touch-icon.png">
+    <link rel="apple-touch-icon" sizes="72x72" href="img/apple-touch-icon-72x72.png">
+    <link rel="apple-touch-icon" sizes="114x114" href="img/apple-touch-icon-114x114.png">
+    <!-- JS
+    ================================================== -->
+
+    <script>
+        filterSelection("all")
+        function filterSelection(c) {
+            var x, i;
+            x = document.getElementsByClassName("filterDiv");
+            if (c == "all") c = "";
+            for (i = 0; i < x.length; i++) {
+                w3RemoveClass(x[i], "show");
+                if (x[i].className.indexOf(c) > -1) w3AddClass(x[i], "show");
+            }
+        }
+
+        function w3AddClass(element, name) {
+            var i, arr1, arr2;
+            arr1 = element.className.split(" ");
+            arr2 = name.split(" ");
+            for (i = 0; i < arr2.length; i++) {
+                if (arr1.indexOf(arr2[i]) == -1) { element.className += " " + arr2[i]; }
+            }
+        }
+
+        function w3RemoveClass(element, name) {
+            var i, arr1, arr2;
+            arr1 = element.className.split(" ");
+            arr2 = name.split(" ");
+            for (i = 0; i < arr2.length; i++) {
+                while (arr1.indexOf(arr2[i]) > -1) {
+                    arr1.splice(arr1.indexOf(arr2[i]), 1);
+                }
+            }
+            element.className = arr1.join(" ");
+        }
+
+        // Add active class to the current button (highlight it)
+        var btnContainer = document.getElementById("myBtnContainer");
+        var btns = btnContainer.getElementsByClassName("btn");
+        for (var i = 0; i < btns.length; i++) {
+            btns[i].addEventListener("click", function () {
+                var current = document.getElementsByClassName("active");
+                current[0].className = current[0].className.replace(" active", "");
+                this.className += " active";
+            });
+        }
+    </script>
+
+    <script src="http://code.jquery.com/jquery-1.8.3.min.js"></script>
+    <script src="~/js/bootstrap.js"></script>
+    <script src="~/js/jquery.prettyPhoto.js"></script>
+    <script src="~/js/jquery.flexslider.js"></script>
+    <script src="~/js/jquery.custom.js"></script>
+    <script type="~/text/javascript">
+
+
+    </script>
+</head>
+
+<body class="home">
+    <!-- Color Bars (above header)-->
+    <div class="color-bar-1"></div>
+    <div class="color-bar-2 color-bg"></div>
+
+    <div class="container">
+
+        <div class="row header">
+            <!-- Begin Header -->
+            <!-- Logo
+        ================================================== -->
+            <div class="span5 logo">
+                <a href="index.htm"><img src="~/img/airbornelogo.png" alt="" /></a>
+                <h5>An Instructional Video Guide for Aerialists</h5>
+            </div>
+
+            <!-- Main Navigation
+        ================================================== -->
+            <div class="span7 navigation">
+                <div class="navbar hidden-phone">
+
+                    <ul class="nav">
+                        <li><a asp-area="" asp-controller="Home" asp-action="Index">Home</a></li>
+
+
+                        <li class="dropdown">
+                            <a class="dropdown-toggle" data-toggle="dropdown" href="gallery-4col.htm">Video Library <b class="caret"></b></a>
+                            <ul class="dropdown-menu">
+                                <li><a asp-area="" asp-controller="TrapezeVideos" asp-action="library">Trapeze</a></li>
+                                <li><a asp-area="" asp-controller="SilksVideos" asp-action="library">Silks</a></li>
+                                <li><a asp-area="" asp-controller="SlingVideos" asp-action="library">Sling</a></li>
+                                <li><a asp-area="" asp-controller="RopeVideos" asp-action="library">Rope</a></li>
+                                <li><a asp-area="" asp-controller="LyraVideos" asp-action="library">Lyra</a></li>
+                            </ul>
+                        </li>
+
+                        <li><a asp-area="" asp-controller="Courses" asp-action="ReferenceIndex">Reference Sheets</a></li>
+
+
+                        <li><a asp-area="" asp-controller="Students" asp-action="Admin">Admin</a></li>
+
+                    </ul>
+
+                </div>
+                <!-- Mobile Nav
+            ================================================== -->
+                <form action="#" id="mobile-nav" class="visible-phone">
+                    <div class="mobile-nav-select">
+                        <select onchange="window.open(this.options[this.selectedIndex].value,'_top')">
+                            <option value="">Navigate...</option>
+                            <option value="index.htm">Home</option>
+                         
+                        </select>
+                    </div>
+                </form>
+            </div>
+
+        </div><!-- End Header -->
+
+        <div class="row headline">
+            <!-- Begin Headline -->
+            <!-- Slider Carousel
+        ================================================== -->
+            <div class="span8">
+
+                <img src="~/img/gallery/trapezegirl.jpg" />
+              
+            </div>
+
+            <!-- Headline Text
+        ================================================== -->
+            <div class="span4">
+                <h3>
+                    Welcome to Airborne Aerialists. <br />
+                    <br /><br />
+                    Flying High Since 2018
+                </h3>
+                <p class="lead">Hello and welcome to our website. Here you will find a video reference library for many of the aerial apparatuses. Including: Trapeze, Silks, Rope, Lyra and Sling.</p>
+                <a href="#"><i class="icon-plus-sign"></i>Read More</a>
+            </div>
+        </div><!-- End Headline -->
+
+
+
+        <div class="row gallery-row">
+            <!-- Begin Gallery Row -->
+
+            <div class="span12">
+                <h5 class="title-bg">
+                    Our Video Library
+                    <small>100's of intructional videos from beginner through to advanced</small>
+                    <button class="btn btn-mini btn-inverse hidden-phone" type="button">View All Videos</button>
+                </h5>
+
+                <!-- Gallery Thumbnails
+            ================================================== -->
+
+                <div class="col-sm">
+                    <!-- Control buttons -->
+                    <div id="myBtnContainer">
+                        <button class="btn active" onclick="filterSelection('all')"> Show all</button>
+
+
+                        <button class="btn" onclick="filterSelection('Beginner')"> Beginner</button>
+
+
+                        <button class="btn" onclick="filterSelection('Intermediate')"> Intermediate</button>
+
+                        <button class="btn" onclick="filterSelection('Advanced')"> Advanced</button>
+                    </div>
+
+                    @foreach (var item in Model)
+    {
+
+
+
+
+                <!-- The filterable elements. Note that some have multiple class names (this can be used if they belong to multiple categories) -->
+
+
+
+                @*<iframe width="392" height="234" src="https://www.youtube.com/embed/@item.Url" frameborder="0" allowfullscreen></iframe>*@
+
+
+
+
+                @if (item.Level == "Beginner")
+{
+              
+                    <div class="filterDiv Beginner">
+
+                        <iframe width="392" height="234" src="https://www.youtube.com/embed/@item.Url?rel=0&amp;controls=0&amp;showinfo=0" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>
+
+                        <h3>     @Html.DisplayFor(modelItem => item.Name) </h3>
+                        <h5>Prerequisites:    @Html.DisplayFor(modelItem => item.PreReqs)             </h5>
+
+
+                    </div>
+                
+                    }
+
+
+
+                    @if (item.Level == "Intermediate")
+    {
+                <div class="filterDiv Intermediate">
+                    <iframe class="embed-responsive-item" width="392" height="234" src="https://www.youtube.com/embed/@item.Url?rel=0&amp;controls=0&amp;showinfo=0" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>
+
+                    <h3>     @Html.DisplayFor(modelItem => item.Name) </h3>
+                    <h5>Prerequisites:    @Html.DisplayFor(modelItem => item.PreReqs)             </h5>
+
+                </div>
+
+}
+
+
+                    @if (item.Level == "Advanced")
+    {
+                <div class="filterDiv Advanced">
+
+                    <iframe class="embed-responsive-item" width="392" height="234" src="https://www.youtube.com/embed/@item.Url?rel=0&amp;controls=0&amp;showinfo=0" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>
+
+                    <h3>     @Html.DisplayFor(modelItem => item.Name) </h3>
+                    <h5>Prerequisites:    @Html.DisplayFor(modelItem => item.PreReqs)             </h5>
+
+                </div>
+
+}
+
+
+
+
+
+                    }
+
+
+
+
+
+
+
+                </div>
+                </div>
+        </div>
+
+    </div>
+  
+
+       
+  
+    <!-- Footer Area
+        ================================================== -->
+    <div class="footer-container">
+        <!-- Begin Footer -->
+        
+            <div class="row">
+                <!-- Begin Sub Footer -->
+                <div class="span12 footer-col footer-sub">
+                    <div class="row no-margin">
+                        <div class="span6"><span class="left">Copyright 2018 Aerial Resources. All rights reserved.</span></div>
+                        <div class="span6">
+                          
+                        </div>
+                    </div>
+                </div>
+            </div><!-- End Sub Footer -->
+        </div>
+   
+    <!-- Scroll to Top -->
+    <div id="toTop" class="hidden-phone hidden-tablet">Back to Top</div>
+
+</body>
+</html>

@@ -1,7 +1,6 @@
 ﻿@model AerialResources.Models.Move
 @using AerialResources.Operations;
 
-
 @{
     ViewData["Title"] = "Create";
 }
@@ -26,8 +25,18 @@
             </div>
             <div class="form-group">
                 <label asp-for="CourseID" class="control-label"></label>
-                <input asp-for="CourseID" class="form-control" value="@DatabaseManager.CourseID" />
+                <input asp-for="CourseID" class="form-control" readonly="readonly" value="@DatabaseManager.CourseID" />
                 <span asp-validation-for="CourseID" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="VideoLink" class="control-label"></label>
+                <input asp-for="VideoLink" class="form-control" />
+                <span asp-validation-for="VideoLink" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="PreReq" class="control-label"></label>
+                <input asp-for="PreReq" class="form-control" />
+                <span asp-validation-for="PreReq" class="text-danger"></span>
             </div>
             <div class="form-group">
                 <input type="submit" value="Create" class="btn btn-default" />
@@ -37,7 +46,7 @@
 </div>
 
 <div>
-    <a asp-action="Index">Back to List</a>
+    <a asp-action="Courses/Index">Back to List</a>
 </div>
 
 @section Scripts {

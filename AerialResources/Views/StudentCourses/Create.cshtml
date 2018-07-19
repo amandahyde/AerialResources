@@ -1,4 +1,4 @@
-﻿@model AerialResources.Models.StudentCourse
+﻿@model AerialResources.Models.StudentCourse;
 @using AerialResources.Operations;
 
 @{
@@ -23,6 +23,8 @@
                 <input asp-for="StudentID" class="form-control" value="@DatabaseManager.StudentID" />
                 <span asp-validation-for="StudentID" class="text-danger"></span>
             </div>
+
+     
             <div class="form-group">
                 <input type="submit" value="Create" class="btn btn-default" />
             </div>

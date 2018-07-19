@@ -17,7 +17,14 @@ namespace AerialResources.Models
 
         public bool Status { get; set; }
 
+        public string Class {get; set;}
 
-        public int ParentID { get; set; }
+        public string Contact { get; set; }
+
+        public string ParentName { get; set; }
+
+        public string ParentContact { get; set; }
+
+        //public int ParentID { get; set; }
     }
 }

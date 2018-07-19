@@ -7,8 +7,7 @@ using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
 using AerialResources.Data;
 using AerialResources.Models;
-using AerialResources.Operations;
-using AerialResources.DTO;
+using Microsoft.AspNetCore.Authorization;
 
 namespace AerialResources.Controllers
 {
@@ -21,12 +20,25 @@ namespace AerialResources.Controllers
             _context = context;
         }
 
+        [Authorize]
         // GET: Students
         public async Task<IActionResult> Index()
         {
             return View(await _context.Student.ToListAsync());
         }
 
+
+        [Authorize]
+        public async Task<IActionResult> Admin()
+                
+        {
+           
+            return View(await _context.Student.ToListAsync());
+
+        }
+
+
+        [Authorize]
         // GET: Students/Details/5
         public async Task<IActionResult> Details(int? id)
         {
@@ -37,11 +49,6 @@ namespace AerialResources.Controllers
 
             var student = await _context.Student
                 .SingleOrDefaultAsync(m => m.StudentID == id);
-
-            GetAllCourses getAllCourses = new GetAllCourses();
-            myCourses myCourses = new myCourses();
-            myStudents myStudents = new myStudents();
-
             if (student == null)
             {
                 return NotFound();
@@ -50,6 +57,7 @@ namespace AerialResources.Controllers
             return View(student);
         }
 
+        [Authorize]
         // GET: Students/Create
         public IActionResult Create()
         {
@@ -61,7 +69,7 @@ namespace AerialResources.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("StudentID,Name,DOB,Status,ParentID")] Student student)
+        public async Task<IActionResult> Create([Bind("StudentID,Name,DOB,Status,Class,Contact,ParentName,ParentContact")] Student student)
         {
             if (ModelState.IsValid)
             {
@@ -71,7 +79,7 @@ namespace AerialResources.Controllers
             }
             return View(student);
         }
-
+        [Authorize]
         // GET: Students/Edit/5
         public async Task<IActionResult> Edit(int? id)
         {
@@ -93,7 +101,7 @@ namespace AerialResources.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(int id, [Bind("StudentID,Name,DOB,Status,ParentID")] Student student)
+        public async Task<IActionResult> Edit(int id, [Bind("StudentID,Name,DOB,Status,Class,Contact,ParentName,ParentContact")] Student student)
         {
             if (id != student.StudentID)
             {
@@ -122,7 +130,7 @@ namespace AerialResources.Controllers
             }
             return View(student);
         }
-
+        [Authorize]
         // GET: Students/Delete/5
         public async Task<IActionResult> Delete(int? id)
         {

@@ -19,5 +19,6 @@ namespace AerialResources.DTO
 
         public myStudents myStudents { get; set; }
 
+        public MyStudentCourses MyStudentCourses { get; set; }
     }
 }
